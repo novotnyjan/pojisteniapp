@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Vymazat pojištěnce</h1>
+
+<p>Jste si jistí, že chcete vymazat pojištěnce <em>{{ pojistenec }}</em>?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Ano, vymazat." />
+</form>
+
+{% endblock %}

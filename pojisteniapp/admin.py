@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Pojisteni, Pojistenec, PojisteniInstance
+from .models import TypPojisteni, Pojistenec, Pojisteni
 
-admin.site.register(PojisteniInstance)
-admin.site.register(Pojistenec)
 admin.site.register(Pojisteni)
+admin.site.register(Pojistenec)
+admin.site.register(TypPojisteni)

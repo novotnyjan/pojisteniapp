@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Seznam typů pojištění</h1>
+  {% if typpojisteni_list %}
+  <table>
+    <thead>
+      <th>Typ pojištění</th>
+    </thead>
+    {% for typpojisteni in typpojisteni_list %}
+      <tr>
+        <td>
+          <a href="">{{ typpojisteni }}</a>
+        </td>
+        <td>
+          <a href="{% url 'typ-pojisteni_delete' typpojisteni.id%}"> Vymazat</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>Zatím nejsou nabízeny žádné typy pojištění.</p>
+  {% endif %}
+{% endblock %}
+
+{% block register_entity%}
+<a href="{% url 'typ-pojisteni_create'%}"> Nový typ pojištění </a>
+{% endblock %}

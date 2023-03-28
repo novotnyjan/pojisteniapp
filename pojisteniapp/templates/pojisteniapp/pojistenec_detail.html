@@ -11,8 +11,13 @@
   <p><strong>Město:</strong> {{pojistenec.mesto}}</p>
   <p><strong>PSČ:</strong>{{pojistenec.psc}}</p>
 
+  <div>
+    <p><a href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit </a></p>
+    <p><a href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat </a></p>
+  </div>
 
-  {% if pojistenec.pojisteniinstance_set.all %}
+
+  {% if pojistenec.pojisteni_set.all %}
   <div>
     <h4>Sjednaná pojištění</h4>
     <table>
@@ -25,25 +30,25 @@
         <th>ID pojištění</th>
         <th>Možné úpravy</th>
       </thead>  
-      {% for pojisteniinstance in pojistenec.pojisteniinstance_set.all %}
+      {% for pojisteni in pojistenec.pojisteni_set.all %}
       <tr>
         <td>
-          {{pojisteniinstance.pojisteni}}
+          {{pojisteni.typpojisteni}}
         </td>
         <td>
-          {{pojisteniinstance.castka}} Kč
+          {{pojisteni.castka}} Kč
         </td>
         <td>
-          {{pojisteniinstance.mesicni_pojistne}} Kč
+          {{pojisteni.mesicni_pojistne}} Kč
         </td>
         <td>
-          {{pojisteniinstance.platnost_od}}
+          {{pojisteni.platnost_od}}
         </td>
         <td>
-          {{pojisteniinstance.platnost_do}}
+          {{pojisteni.platnost_do}}
         </td>
         <td>
-          <a href="{{pojisteniinstance.get_absolute_url}}">{{pojisteniinstance.id}}</a>
+          <a href="{{pojisteni.get_absolute_url}}">{{pojisteni.id}}</a>
         </td>
         <td>
           úpravy

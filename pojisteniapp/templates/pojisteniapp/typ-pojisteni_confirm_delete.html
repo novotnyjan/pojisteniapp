@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Vymazat typ pojištění</h1>
+
+<p>Jste si jistí, že chcete vymazat typ pojištění <em>{{ typpojisteni }}</em>?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Ano, vymazat." />
+</form>
+
+{% endblock %}

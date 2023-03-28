@@ -27,20 +27,20 @@ class Pojistenec(models.Model):
     class Meta:
         ordering = ['prijmeni', 'jmeno', 'mesto']
 
-class Pojisteni(models.Model):
+class TypPojisteni(models.Model):
 
-    typ = models.CharField('Typ pojištění', max_length=30)
+    jmeno = models.CharField('Typ pojištění', max_length=30)
 
     def __str__(self) -> str:
-        return f'{self.typ}'
+        return f'{self.jmeno}'
     
     class Meta:
-        ordering = ['typ']
+        ordering = ['jmeno']
 
-class PojisteniInstance(models.Model):
+class Pojisteni(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unikátní ID pojištění')
-    pojisteni = models.ForeignKey(Pojisteni, on_delete=models.RESTRICT)
+    typ_pojisteni = models.ForeignKey(TypPojisteni, on_delete=models.RESTRICT)
     pojistenec = models.ForeignKey(Pojistenec, on_delete=models.CASCADE)
     castka = models.IntegerField('Částka')
     mesicni_pojistne = models.IntegerField('Měsíční pojistné')
@@ -50,10 +50,10 @@ class PojisteniInstance(models.Model):
     predmet_pojisteni = models.CharField('Předmět pojištění', max_length=30, blank=True, null=True)
 
     def __str__(self) -> str:
-        return f'{self.pojisteni.typ} pojištěnce {self.pojistenec.jmeno} {self.pojistenec.prijmeni}'
+        return f'{self.typ_pojisteni.jmeno} pojištěnce {self.pojistenec.jmeno} {self.pojistenec.prijmeni}'
     
     def get_absolute_url(self):
         return reverse("pojisteni_detail", args=[self.id])
 
     class Meta:
-        ordering = ['pojistenec__prijmeni', 'pojistenec__jmeno', 'pojisteni__typ']
+        ordering = ['pojistenec__prijmeni', 'pojistenec__jmeno', 'pojistenec__mesto' ,'typ_pojisteni__jmeno']

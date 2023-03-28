@@ -1,16 +1,41 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Seznam typů pojištění</h1>
+  <h1>Seznam sjednaných pojištění</h1>
   {% if pojisteni_list %}
   <table>
     <thead>
+      <th>Pojištěnec</th>
       <th>Typ pojištění</th>
+      <th>Částka</th>
+      <th>Měsíční pojistné</th>
+      <th>Platnost od</th>
+      <th>Platnost do</th>
+      <th>ID pojištění</th>
+      <th>Možné úpravy</th>
     </thead>
     {% for pojisteni in pojisteni_list %}
       <tr>
         <td>
-          <a href="">{{ pojisteni.typ }}</a>
+          <a href="{{pojisteni.pojistenec.get_absolute_url}}">{{pojisteni.pojistenec.prijmeni}}, {{ pojisteni.pojistenec.jmeno }}</a>
+        </td>
+        <td>
+          {{pojisteni.typpojisteni}}
+        </td>
+        <td>
+          {{pojisteni.castka}} Kč
+        </td>
+        <td>
+          {{pojisteni.mesicni_pojistne}} Kč
+        </td>
+        <td>
+          {{pojisteni.platnost_od}}
+        </td>
+        <td>
+          {{pojisteni.platnost_do}}
+        </td>
+        <td>
+          <a href="{{pojisteni.get_absolute_url}}">{{pojisteni.id}}</a>
         </td>
         <td>
           úpravy
@@ -19,6 +44,10 @@
     {% endfor %}
   </table>
   {% else %}
-    <p>Zatím nejsou nabízeny žádné typy pojištění.</p>
+    <p>Zatím nejsou žádní pojištěnci pojištění.</p>
   {% endif %}
+{% endblock %}
+
+{% block register_entity%}
+<a href="{% url 'pojisteni_create'%}"> Pojistit pojištěnce </a>
 {% endblock %}
