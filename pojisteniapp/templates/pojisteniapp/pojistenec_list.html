@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Book List</h1>
+  <h1>Seznam pojištěnců</h1>
   {% if pojistenec_list %}
   <table>
     <thead>
@@ -10,15 +10,20 @@
       <th>Možné úpravy</th>
     </thead>
     {% for pojistenec in pojistenec_list %}
+    <tr>
       <td>
-        <a href="">{{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</a>
+        <a href="{{ pojistenec.get_absolute_url }}">{{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</a>
       </td>
       <td>
         {{pojistenec.ulice}} {{pojistenec.cislo_popisne}}, {{pojistenec.mesto}}
       </td>
+      <td>
+        úpravy
+      </td>
+    </tr>
     {% endfor %}
   </table>
   {% else %}
-    <p>There are no recorded authors for now.</p>
+    <p>Zatím nejsou zaregistrováni žádní pojištěnci.</p>
   {% endif %}
 {% endblock %}

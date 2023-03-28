@@ -228,3 +228,7 @@ margin-right: 15px;
 #reference a{
 text-decoration: none;
 }
+
+.aktivni-paginator {
+    color: green;
+}

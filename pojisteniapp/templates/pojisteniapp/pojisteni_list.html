@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Seznam typů pojištění</h1>
+  {% if pojisteni_list %}
+  <table>
+    <thead>
+      <th>Typ pojištění</th>
+    </thead>
+    {% for pojisteni in pojisteni_list %}
+      <tr>
+        <td>
+          <a href="">{{ pojisteni.typ }}</a>
+        </td>
+        <td>
+          úpravy
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>Zatím nejsou nabízeny žádné typy pojištění.</p>
+  {% endif %}
+{% endblock %}

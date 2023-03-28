@@ -2,6 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinValueValidator, MaxValueValidator
 import uuid
+from django.urls import reverse
 
 # Create your models here.
 
@@ -18,6 +19,13 @@ class Pojistenec(models.Model):
 
     def __str__(self) -> str:
         return f'{self.jmeno} {self.prijmeni}'
+    
+    def get_absolute_url(self):
+        return reverse("pojistenec", kwargs={"pk": self.pk})
+    
+
+    class Meta:
+        ordering = ['prijmeni', 'jmeno', 'mesto']
 
 class Pojisteni(models.Model):
 
@@ -25,6 +33,9 @@ class Pojisteni(models.Model):
 
     def __str__(self) -> str:
         return f'{self.typ}'
+    
+    class Meta:
+        ordering = ['typ']
 
 class PojisteniInstance(models.Model):
 
@@ -40,3 +51,9 @@ class PojisteniInstance(models.Model):
 
     def __str__(self) -> str:
         return f'{self.pojisteni.typ} pojištěnce {self.pojistenec.jmeno} {self.pojistenec.prijmeni}'
+    
+    def get_absolute_url(self):
+        return reverse("pojisteni_detail", args=[self.id])
+
+    class Meta:
+        ordering = ['pojistenec__prijmeni', 'pojistenec__jmeno', 'pojisteni__typ']

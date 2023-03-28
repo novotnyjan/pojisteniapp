@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Pojištěnec: {{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</h1>
+
+  <p><strong>Jméno:</strong> {{pojistenec.jmeno}}</p>
+  <p><strong>Příjmení:</strong> {{pojistenec.prijmeni}}</p>
+  <p><strong>Email:</strong> {{pojistenec.email}}</p>
+  <p><strong>Telefon:</strong> {{pojistenec.telefon}}</p>
+  <p><strong>Ulice a č.p.:</strong> {{pojistenec.cislo_popisne}}</p>
+  <p><strong>Město:</strong> {{pojistenec.mesto}}</p>
+  <p><strong>PSČ:</strong>{{pojistenec.psc}}</p>
+
+
+  {% if pojistenec.pojisteniinstance_set.all %}
+  <div>
+    <h4>Sjednaná pojištění</h4>
+    <table>
+      <thead>
+        <th>Typ pojištění</th>
+        <th>Částka</th>
+        <th>Měsíční pojistné</th>
+        <th>Platnost od</th>
+        <th>Platnost do</th>
+        <th>ID pojištění</th>
+        <th>Možné úpravy</th>
+      </thead>  
+      {% for pojisteniinstance in pojistenec.pojisteniinstance_set.all %}
+      <tr>
+        <td>
+          {{pojisteniinstance.pojisteni}}
+        </td>
+        <td>
+          {{pojisteniinstance.castka}} Kč
+        </td>
+        <td>
+          {{pojisteniinstance.mesicni_pojistne}} Kč
+        </td>
+        <td>
+          {{pojisteniinstance.platnost_od}}
+        </td>
+        <td>
+          {{pojisteniinstance.platnost_do}}
+        </td>
+        <td>
+          <a href="{{pojisteniinstance.get_absolute_url}}">{{pojisteniinstance.id}}</a>
+        </td>
+        <td>
+          úpravy
+        </td>
+      </tr>
+    {% endfor %}
+    </table>
+  </div>
+  {% endif %}
+{% endblock %}

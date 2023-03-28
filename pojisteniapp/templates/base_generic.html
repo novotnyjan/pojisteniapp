@@ -19,9 +19,9 @@
         <nav>
             <ul>
                 <li {% if request.resolver_match.url_name == 'o-aplikaci' %} class = "aktivni" {%endif%}><a href="{% url 'o-aplikaci' %}">O aplikaci</a></li>
-                <li><a href="">Typy pojištění</a></li>
+                <li{% if request.resolver_match.url_name == 'typy-pojisteni' %} class = "aktivni" {%endif%}><a href="{% url 'typy-pojisteni' %}">Typy pojištění</a></li>
                 <li {% if request.resolver_match.url_name == 'pojistenci' %} class = "aktivni" {%endif%}><a href="{% url 'pojistenci' %}">Pojištěnci</a></li>
-                <li><a href="">Pojištění</a></li>
+                <li{% if request.resolver_match.url_name == 'pojisteni_list' %} class = "aktivni" {%endif%}><a href="{% url 'pojisteni_list' %}">Sjednaná pojištění</a></li>
             </ul>
         </nav>
     </header>
@@ -30,17 +30,41 @@
     <div>
     {% block content %}
     {% endblock %}
+
     {% block pagination %}
         {% if is_paginated %}
             <div>
                 <span>
                     {% if page_obj.has_previous %}
-                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Předchozí</a>
+                        <a href="{{ request.path }}?page=1"> &lt &lt &lt </a>
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"> &lt </a>
+                    {% else %}
+                    <a href="{{ request.path }}?page=1"> &lt &lt &lt </a>
+                    <a href="{{ request.path }}?page=1"> &lt </a>
                     {% endif %}
-                    {% for page_number in page_obj.paginator.page_range %} {%if page_number > page_obj.number|add:'-3' and page_number < page_obj.number|add:'3' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                    
+                    {% if page_obj.number == 1 and page.obj.number != page_obj.paginator.num_pages %}
+                    {% for page_number in page_obj.paginator.page_range %} {%if page_number <= page_obj.number|add:'4' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                    
+                    {% elif page_obj.number == 2 and page.obj.number != page_obj.paginator.num_pages %}
+                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-1' and page_number <= page_obj.number|add:'3' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                    
+                    {% elif page_obj.number == page_obj.paginator.num_pages and page.obj.number != 1 %}
+                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-4'%}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                    
+                    {% elif page_obj.number == page_obj.paginator.num_pages|add:'-1' and page.obj.number != 1 %}
+                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-3' and page_number <= page_obj.number|add:'1' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+
+                    {% else%}
+                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-2' and page_number <= page_obj.number|add:'2' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                    {% endif%}            
                     
                     {% if page_obj.has_next %}
-                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Další</a>
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"> &gt </a>
+                        <a href="{{ request.path }}?page={{ page_obj.paginator.num_pages }}"> &gt &gt &gt </a>
+                    {% else %}
+                    <a href="{{ request.path }}?page={{ page_obj.number }}"> &gt &gt &gt </a>
+                    <a href="{{ request.path }}?page={{ page_obj.number }}"> &gt </a>
                     {% endif %}
                 </span>
             </div>

@@ -11,5 +11,20 @@ def index(request):
 
 class PojistnecListView(generic.ListView):
     model = Pojistenec
-    template_name = 'pojistenec_list.html'
-    paginate_by = 1
+    paginate_by = 5
+
+class PojisteniInstancecListView(generic.ListView):
+    model = PojisteniInstance
+    paginate_by = 5
+    template_name = 'pojisteniapp/pojisteni-instance_list.html'
+
+class PojisteniListView(generic.ListView):
+    model = Pojisteni
+    paginate_by = 10
+
+class PojistenecDetailView(generic.DetailView):
+    model = Pojistenec
+
+class PojisteniInstanceDetailView(generic.DetailView):
+    model = PojisteniInstance
+    template_name = 'pojisteniapp/pojisteni-instance_detail.html'
