@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Book List</h1>
+  {% if pojistenec_list %}
+  <table>
+    <thead>
+      <th>Jméno</th>
+      <th>Bydliště</th>
+      <th>Možné úpravy</th>
+    </thead>
+    {% for pojistenec in pojistenec_list %}
+      <td>
+        <a href="">{{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</a>
+      </td>
+      <td>
+        {{pojistenec.ulice}} {{pojistenec.cislo_popisne}}, {{pojistenec.mesto}}
+      </td>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>There are no recorded authors for now.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cz-cs">
+<head>
+  {% block title %}<title>Pojisteni App</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+</head>
+<body>
+    
+    {% block header %}
+    <header>
+        <div id="logo">
+            <h1>PojištěníApp</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li {% if request.resolver_match.url_name == 'o-aplikaci' %} class = "aktivni" {%endif%}><a href="{% url 'o-aplikaci' %}">O aplikaci</a></li>
+                <li><a href="">Typy pojištění</a></li>
+                <li {% if request.resolver_match.url_name == 'pojistenci' %} class = "aktivni" {%endif%}><a href="{% url 'pojistenci' %}">Pojištěnci</a></li>
+                <li><a href="">Pojištění</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% endblock %}
+
+    <div>
+    {% block content %}
+    {% endblock %}
+    {% block pagination %}
+        {% if is_paginated %}
+            <div>
+                <span>
+                    {% if page_obj.has_previous %}
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Předchozí</a>
+                    {% endif %}
+                    {% for page_number in page_obj.paginator.page_range %} {%if page_number > page_obj.number|add:'-3' and page_number < page_obj.number|add:'3' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Další</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    {% endblock %}
+    </div>
+
+    <footer>
+        Vytvořil &copy;Jan Novotný 2023
+    </footer>
+</body>
+</html>
