@@ -20,7 +20,7 @@
 
   {% if pojistenec.pojisteni_set.all %}
   <div>
-    <h4>Sjednaná pojištění</h4>
+    <h3>Sjednaná pojištění</h3>
     <table>
       <thead>
         <th>Typ pojištění</th>
@@ -58,5 +58,7 @@
     {% endfor %}
     </table>
   </div>
+  {% else %}
+    <h3>Pojištěnec nemá registrovaná žádná pojištění</h3>
   {% endif %}
 {% endblock %}
