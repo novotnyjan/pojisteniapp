@@ -13,9 +13,10 @@ path('pojisteni_detail/<uuid:pk>', views.PojisteniDetailView.as_view(), name= 'p
 path('pojistenec/create/', views.PojistenecCreate.as_view(), name='pojistenec_create'),
 path('pojistenec/<int:pk>/update/', views.PojistenecUpdate.as_view(), name='pojistenec_update'),
 path('pojistenec/<int:pk>/delete/', views.PojistenecDelete.as_view(), name='pojistenec_delete'),
-path('pojisteni/create/', views.PojisteniCreate.as_view(), name='pojisteni_create'),
-path('pojisteni/<int:pk>/update/', views.PojisteniUpdate.as_view(), name='pojisteni_update'),
-path('pojisteni/<int:pk>/delete/', views.PojisteniDelete.as_view(), name='pojisteni_delete'),
+path('pojisteni/create/', views.vytvorit_pojisteni, name='pojisteni_create'),
+path('pojisteni/<uuid:pk>/update/', views.upravit_pojisteni, name='pojisteni_update'),
+path('pojisteni/<uuid:pk>/delete/', views.PojisteniDelete.as_view(), name='pojisteni_delete'),
 path('typ-pojisteni/create/', views.TypPojisteniCreate.as_view(), name='typ-pojisteni_create'),
 path('typ-pojisteni/<int:pk>/delete/', views.TypPojisteniDelete.as_view(), name='typ-pojisteni_delete'),
+path('pojistenec/<int:pk>/pojistit-pojistence/', views.pojistit_pojistence, name='pojistit-pojistence')
 ]

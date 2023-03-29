@@ -20,7 +20,7 @@
           <a href="{{pojisteni.pojistenec.get_absolute_url}}">{{pojisteni.pojistenec.prijmeni}}, {{ pojisteni.pojistenec.jmeno }}</a>
         </td>
         <td>
-          {{pojisteni.typpojisteni}}
+          {{pojisteni.typ_pojisteni}}
         </td>
         <td>
           {{pojisteni.castka}} Kč
@@ -38,7 +38,7 @@
           <a href="{{pojisteni.get_absolute_url}}">{{pojisteni.id}}</a>
         </td>
         <td>
-          úpravy
+          <a href="{% url 'pojisteni_update' pojisteni.id%}"> Upravit</a> <a href="{% url 'pojisteni_delete' pojisteni.id%}"> Vymazat</a>
         </td>
       </tr>
     {% endfor %}

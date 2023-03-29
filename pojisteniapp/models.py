@@ -47,7 +47,7 @@ class Pojisteni(models.Model):
     platnost_od = models.DateField()
     platnost_do = models.DateField()
 
-    predmet_pojisteni = models.CharField('Předmět pojištění', max_length=30, blank=True, null=True)
+    predmet_pojisteni = models.CharField('Předmět pojištění', max_length=30, blank=True, null=True, help_text='Vyplňte pouze v případě, že předmět pojištění není patrný (např. u pojištění majetku).')
 
     def __str__(self) -> str:
         return f'{self.typ_pojisteni.jmeno} pojištěnce {self.pojistenec.jmeno} {self.pojistenec.prijmeni}'

@@ -13,6 +13,7 @@
 
   <div>
     <p><a href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit </a></p>
+    <p><a href="{% url 'pojistit-pojistence' pojistenec.id%}"> Pojistit </a></p>
     <p><a href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat </a></p>
   </div>
 
@@ -33,7 +34,7 @@
       {% for pojisteni in pojistenec.pojisteni_set.all %}
       <tr>
         <td>
-          {{pojisteni.typpojisteni}}
+          {{pojisteni.typ_pojisteni}}
         </td>
         <td>
           {{pojisteni.castka}} Kč

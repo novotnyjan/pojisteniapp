@@ -4,20 +4,14 @@
   <h1>{{pojisteni}}</h1>
 
   <p><strong>Pojištěnec:</strong> <a href="{{pojisteni.pojistenec.get_absolute_url}}">{{pojisteni.pojistenec.jmeno}} {{pojisteni.pojistenec.prijmeni}}</a></p>
-  <p><strong>Typ pojištění</strong> {{pojisteni.typpojisteni}}</p>
+  <p><strong>Typ pojištění</strong> {{pojisteni.typ_pojisteni}}</p>
   <p><strong>Částka:</strong> {{pojisteni.castka}}</p>
   <p><strong>Měsíční pojistné:</strong> {{pojisteni.mesicni_pojistne}}</p>
   <p><strong>Platnost od:</strong> {{pojisteni.platnost_od}}</p>
   <p><strong>Platnost do:</strong> {{pojisteni.platnost_do}}</p>
-  <p><strong>ID pojištění:</strong>{{pojisteni.id}}</p>
+  {% if pojisteni.predmet_pojisteni %}
+  <p><strong>Předmět pojištění:</strong> {{pojisteni.predmet_pojisteni}}</p>
+  {% endif %}
+  <p><strong>ID pojištění:</strong> {{pojisteni.id}}</p>
 
-
-  <div>
-    <h4>Sjednaná pojištění</h4>
-
-    {% for pojisteni in pojistenec.pojisteni_set.all %}
-      <hr>
-      <p>{{pojisteni.id}}</p>
-    {% endfor %}
-  </div>
 {% endblock %}

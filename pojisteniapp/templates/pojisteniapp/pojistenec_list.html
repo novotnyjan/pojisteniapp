@@ -18,7 +18,7 @@
         {{pojistenec.ulice}} {{pojistenec.cislo_popisne}}, {{pojistenec.mesto}}
       </td>
       <td>
-        <a href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit</a> <a href=""> Pojistit</a> <a href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat</a>
+        <a href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit</a> <a href="{% url 'pojistit-pojistence' pojistenec.id %}"> Pojistit</a> <a href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat</a>
       </td>
     </tr>
     {% endfor %}
