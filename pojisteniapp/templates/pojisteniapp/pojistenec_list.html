@@ -7,6 +7,8 @@
     <thead>
       <th>Jméno</th>
       <th>Bydliště</th>
+      <th>Telefon</th>
+      <th>Email</th>
       <th>Možné úpravy</th>
     </thead>
     {% for pojistenec in pojistenec_list %}
@@ -16,6 +18,12 @@
       </td>
       <td>
         {{pojistenec.ulice}} {{pojistenec.cislo_popisne}}, {{pojistenec.mesto}}
+      </td>
+      <td>
+        {{pojistenec.telefon}}
+      </td>
+      <td>
+        {{pojistenec.email}}
       </td>
       <td>
         <a class = 'button modifier' href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit</a> <a class = 'button constructor' href="{% url 'pojistit-pojistence' pojistenec.id %}"> Pojistit</a> <a class = 'button destructor' href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat</a>

@@ -8,9 +8,8 @@
 <article id= 'index'>
   <h1>O aplikaci</h1>
   <p>Aplikace umožnuje vytvářet typy pojištění a pojištěnce. Následovně je možné jednotlivé pojištěnce pojišťovat pomocí vytvořených typů pojištění.</p>
-  <p>Typ pojištění se vytvoří pomocí tlačítka "Nový typ pojištění" pod záložkou "Typy pojištění".</p>
-  <p>Pojištěnce je možné registrovat pomocí tlačítka "Registrovat pojištěnce" pod záložkou "Pojištěnci".</p>
-  <p>Pojištěnce je poté možné pojistit pomocí tlačítka "Pojistit" u jednotlivých pojištěnců pod záložkou "Pojištěnci" a nebo pomocí tlačítka "Pojistit pojištěnce" pod záložkou "Sjednaná pojištění".</p>
+  <p>Typ pojištění se vytvoří pomocí tlačítka "Nový typ pojištění" pod záložkou <a href="{% url 'typy-pojisteni' %}">"Typy pojištění"</a>.</p>
+  <p>Pojištěnce je možné registrovat pomocí tlačítka "Registrovat pojištěnce" pod záložkou <a href="{% url 'pojistenci' %}">"Pojištěnci"</a>.</p>
+  <p>Pojištěnce je poté možné pojistit pomocí tlačítka "Pojistit" u jednotlivých pojištěnců pod záložkou <a href="{% url 'pojistenci' %}">"Pojištěnci"</a> a nebo pomocí tlačítka "Pojistit pojištěnce" pod záložkou <a href="{% url 'pojisteni_list' %}">"Sjednaná pojištění"</a>.</p>
 </article>
-
 {% endblock %}
