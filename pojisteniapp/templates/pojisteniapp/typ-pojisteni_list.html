@@ -10,10 +10,10 @@
     {% for typpojisteni in typpojisteni_list %}
       <tr>
         <td>
-          <a href="">{{ typpojisteni }}</a>
+          {{ typpojisteni }}
         </td>
         <td>
-          <a href="{% url 'typ-pojisteni_delete' typpojisteni.id%}"> Vymazat</a>
+          <a class = 'button destructor' href="{% url 'typ-pojisteni_delete' typpojisteni.id%}"> Vymazat</a>
         </td>
       </tr>
     {% endfor %}
@@ -24,5 +24,5 @@
 {% endblock %}
 
 {% block register_entity%}
-<a href="{% url 'typ-pojisteni_create'%}"> Nový typ pojištění </a>
+<a class = 'button constructor' href="{% url 'typ-pojisteni_create'%}"> Nový typ pojištění </a>
 {% endblock %}

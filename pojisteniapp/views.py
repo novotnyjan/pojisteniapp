@@ -16,15 +16,15 @@ def index(request):
 
 class PojistnecListView(generic.ListView):
     model = Pojistenec
-    paginate_by = 4
+    paginate_by = 6
 
 class PojisteniListView(generic.ListView):
     model = Pojisteni
-    paginate_by = 5
+    paginate_by = 6
 
 class TypPojisteniListView(generic.ListView):
     model = TypPojisteni
-    paginate_by = 10
+    paginate_by = 6
     template_name = 'pojisteniapp/typ-pojisteni_list.html'
 
 class PojistenecDetailView(generic.DetailView):

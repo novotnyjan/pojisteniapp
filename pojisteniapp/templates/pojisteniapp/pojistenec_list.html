@@ -18,7 +18,7 @@
         {{pojistenec.ulice}} {{pojistenec.cislo_popisne}}, {{pojistenec.mesto}}
       </td>
       <td>
-        <a href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit</a> <a href="{% url 'pojistit-pojistence' pojistenec.id %}"> Pojistit</a> <a href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat</a>
+        <a class = 'button modifier' href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit</a> <a class = 'button constructor' href="{% url 'pojistit-pojistence' pojistenec.id %}"> Pojistit</a> <a class = 'button destructor' href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat</a>
       </td>
     </tr>
     {% endfor %}
@@ -30,5 +30,5 @@
 {% endblock %}
 
 {% block register_entity%}
-<a href="{% url 'pojistenec_create'%}"> Registrovat pojištěnce </a>
+<a class = 'button constructor' href="{% url 'pojistenec_create'%}"> Registrovat pojištěnce </a>
 {% endblock %}

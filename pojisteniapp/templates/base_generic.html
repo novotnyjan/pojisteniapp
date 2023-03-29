@@ -27,45 +27,63 @@
     </header>
     {% endblock %}
 
-    <div>
+    <div id = 'container'>
     {% block content %}
     {% endblock %}
 
     {% block pagination %}
         {% if is_paginated %}
-            <div>
-                <span>
+            <div class = 'paginator-container'>
+                <span class = 'paginator-navigation'>
+                            <a id= 'paginator-go-to-start' href="{{ request.path }}?page=1"> &lt &lt &lt </a>
                     {% if page_obj.has_previous %}
-                        <a href="{{ request.path }}?page=1"> &lt &lt &lt </a>
-                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"> &lt </a>
+                            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"> &lt </a>
                     {% else %}
-                    <a href="{{ request.path }}?page=1"> &lt &lt &lt </a>
-                    <a href="{{ request.path }}?page=1"> &lt </a>
+                            <a href="{{ request.path }}?page=1"> &lt </a>
                     {% endif %}
                     
                     {% if page_obj.number == 1 and page.obj.number != page_obj.paginator.num_pages %}
-                    {% for page_number in page_obj.paginator.page_range %} {%if page_number <= page_obj.number|add:'4' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                      {% for page_number in page_obj.paginator.page_range %}
+                        {%if page_number <= page_obj.number|add:'4' %}
+                            <a {% if page_number == page_obj.number %} id='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a>
+                        {%endif%}
+                      {% endfor %}
                     
                     {% elif page_obj.number == 2 and page.obj.number != page_obj.paginator.num_pages %}
-                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-1' and page_number <= page_obj.number|add:'3' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                        {% for page_number in page_obj.paginator.page_range %}
+                          {%if page_number >= page_obj.number|add:'-1' and page_number <= page_obj.number|add:'3' %}
+                            <a {% if page_number == page_obj.number %} id='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a>
+                          {%endif%}
+                        {% endfor %}
                     
                     {% elif page_obj.number == page_obj.paginator.num_pages and page.obj.number != 1 %}
-                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-4'%}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                        {% for page_number in page_obj.paginator.page_range %} 
+                          {%if page_number >= page_obj.number|add:'-4'%}
+                            <a {% if page_number == page_obj.number %} id='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a>
+                          {%endif%}
+                        {% endfor %}
                     
                     {% elif page_obj.number == page_obj.paginator.num_pages|add:'-1' and page.obj.number != 1 %}
-                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-3' and page_number <= page_obj.number|add:'1' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                        {% for page_number in page_obj.paginator.page_range %}
+                          {%if page_number >= page_obj.number|add:'-3' and page_number <= page_obj.number|add:'1' %}
+                            <a {% if page_number == page_obj.number %} id='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a>
+                          {%endif%}
+                        {% endfor %}
 
                     {% else%}
-                    {% for page_number in page_obj.paginator.page_range %} {%if page_number >= page_obj.number|add:'-2' and page_number <= page_obj.number|add:'2' %}<a {% if page_number == page_obj.number %} class='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a> {%endif%}{% endfor %}
+                        {% for page_number in page_obj.paginator.page_range %}
+                          {%if page_number >= page_obj.number|add:'-2' and page_number <= page_obj.number|add:'2' %}
+                            <a {% if page_number == page_obj.number %} id='aktivni-paginator' {%endif%} href="{{ request.path }}?page={{ page_number }}">{{ page_number }}</a>
+                          {%endif%}
+                        {% endfor %}
                     {% endif%}            
                     
                     {% if page_obj.has_next %}
-                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"> &gt </a>
-                        <a href="{{ request.path }}?page={{ page_obj.paginator.num_pages }}"> &gt &gt &gt </a>
+                            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"> &gt </a>
                     {% else %}
-                    <a href="{{ request.path }}?page={{ page_obj.number }}"> &gt &gt &gt </a>
-                    <a href="{{ request.path }}?page={{ page_obj.number }}"> &gt </a>
+                            <a href="{{ request.path }}?page={{ page_obj.number }}"> &gt </a>
                     {% endif %}
+                            <a id= 'paginator-go-to-end' href="{{ request.path }}?page={{ page_obj.paginator.num_pages }}"> &gt &gt &gt </a>
                 </span>
             </div>
         {% endif %}

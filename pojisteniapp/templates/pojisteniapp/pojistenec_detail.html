@@ -12,9 +12,9 @@
   <p><strong>PSČ:</strong>{{pojistenec.psc}}</p>
 
   <div>
-    <p><a href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit </a></p>
-    <p><a href="{% url 'pojistit-pojistence' pojistenec.id%}"> Pojistit </a></p>
-    <p><a href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat </a></p>
+    <p><a class = 'button modifier' href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit </a></p>
+    <p><a class = 'button constructor' href="{% url 'pojistit-pojistence' pojistenec.id%}"> Pojistit </a></p>
+    <p><a class = 'button destructor' href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat </a></p>
   </div>
 
 

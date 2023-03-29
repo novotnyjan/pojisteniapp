@@ -8,8 +8,8 @@ from django.urls import reverse
 
 class Pojistenec(models.Model):
 
-    jmeno = models.CharField('Jméno', max_length=30, help_text='Zadejte křestní jméno pojištěnce')
-    prijmeni = models.CharField('Příjmení', max_length=30, help_text='Zadejte příjmení pojištěnce')
+    jmeno = models.CharField('Jméno', max_length=30)
+    prijmeni = models.CharField('Příjmení', max_length=30)
     email = models.EmailField(max_length=254)
     telefon = PhoneNumberField()
     ulice = models.CharField(max_length=30)

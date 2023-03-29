@@ -38,7 +38,7 @@
           <a href="{{pojisteni.get_absolute_url}}">{{pojisteni.id}}</a>
         </td>
         <td>
-          <a href="{% url 'pojisteni_update' pojisteni.id%}"> Upravit</a> <a href="{% url 'pojisteni_delete' pojisteni.id%}"> Vymazat</a>
+          <a class = 'button modifier' href="{% url 'pojisteni_update' pojisteni.id%}"> Upravit</a> <a class = 'button destructor' href="{% url 'pojisteni_delete' pojisteni.id%}"> Vymazat</a>
         </td>
       </tr>
     {% endfor %}
@@ -49,5 +49,5 @@
 {% endblock %}
 
 {% block register_entity%}
-<a href="{% url 'pojisteni_create'%}"> Pojistit pojištěnce </a>
+<a class = 'button constructor' href="{% url 'pojisteni_create'%}"> Pojistit pojištěnce </a>
 {% endblock %}
