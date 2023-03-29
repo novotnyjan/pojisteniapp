@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Seznam sjednaných pojištění</h1>
+  <h1 class= 'list-header'>Seznam sjednaných pojištění</h1>
   {% if pojisteni_list %}
-  <table>
-    <thead>
+  <table  class= 'list-table'>
+    <thead >
       <th>Pojištěnec</th>
       <th>Typ pojištění</th>
       <th>Částka</th>
@@ -16,7 +16,7 @@
     </thead>
     {% for pojisteni in pojisteni_list %}
       <tr>
-        <td>
+        <td class= 'td-jmeno-pojistence'>
           <a href="{{pojisteni.pojistenec.get_absolute_url}}">{{pojisteni.pojistenec.prijmeni}}, {{ pojisteni.pojistenec.jmeno }}</a>
         </td>
         <td>
@@ -49,5 +49,7 @@
 {% endblock %}
 
 {% block register_entity%}
+<div class= 'outside-list-button-container'>
 <a class = 'button constructor' href="{% url 'pojisteni_create'%}"> Pojistit pojištěnce </a>
+</div>
 {% endblock %}

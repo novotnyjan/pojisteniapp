@@ -1,6 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% if request.resolver_match.url_name == 'pojistenec_create' %}
+<h2>Registrovat nového pojištěnce</h2>
+{% elif request.resolver_match.url_name == 'pojistenec_update'%}
+<h2>Upravit údaje pojištěnce</h2>
+{%endif%}
   <form action="" method="post">
     {% csrf_token %}
     <table>

@@ -40,8 +40,8 @@ class TypPojisteni(models.Model):
 class Pojisteni(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unikátní ID pojištění')
-    typ_pojisteni = models.ForeignKey(TypPojisteni, on_delete=models.RESTRICT)
-    pojistenec = models.ForeignKey(Pojistenec, on_delete=models.CASCADE)
+    typ_pojisteni = models.ForeignKey(TypPojisteni, on_delete=models.RESTRICT, verbose_name='Typ pojištění')
+    pojistenec = models.ForeignKey(Pojistenec, on_delete=models.CASCADE, verbose_name='Pojištěnec')
     castka = models.IntegerField('Částka')
     mesicni_pojistne = models.IntegerField('Měsíční pojistné')
     platnost_od = models.DateField()

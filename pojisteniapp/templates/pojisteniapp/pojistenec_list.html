@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Seznam pojištěnců</h1>
+  <h1 class= 'list-header'>Seznam pojištěnců</h1>
   {% if pojistenec_list %}
-  <table>
+  <table class= 'list-table'>
     <thead>
       <th>Jméno</th>
       <th>Bydliště</th>
@@ -11,7 +11,7 @@
     </thead>
     {% for pojistenec in pojistenec_list %}
     <tr>
-      <td>
+      <td class= 'td-jmeno-pojistence'>
         <a href="{{ pojistenec.get_absolute_url }}">{{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</a>
       </td>
       <td>
@@ -30,5 +30,7 @@
 {% endblock %}
 
 {% block register_entity%}
+<div class= 'outside-list-button-container'>
 <a class = 'button constructor' href="{% url 'pojistenec_create'%}"> Registrovat pojištěnce </a>
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>{{pojisteni}}</h1>
+  <h2>{{pojisteni}}</h2>
 
   <p><strong>Pojištěnec:</strong> <a href="{{pojisteni.pojistenec.get_absolute_url}}">{{pojisteni.pojistenec.jmeno}} {{pojisteni.pojistenec.prijmeni}}</a></p>
   <p><strong>Typ pojištění</strong> {{pojisteni.typ_pojisteni}}</p>

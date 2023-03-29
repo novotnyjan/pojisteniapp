@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Pojištěnec: {{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</h1>
+  <h2>Pojištěnec: {{ pojistenec.jmeno }} {{pojistenec.prijmeni}}</h2>
 
   <p><strong>Jméno:</strong> {{pojistenec.jmeno}}</p>
   <p><strong>Příjmení:</strong> {{pojistenec.prijmeni}}</p>
@@ -12,9 +12,9 @@
   <p><strong>PSČ:</strong>{{pojistenec.psc}}</p>
 
   <div>
-    <p><a class = 'button modifier' href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit </a></p>
-    <p><a class = 'button constructor' href="{% url 'pojistit-pojistence' pojistenec.id%}"> Pojistit </a></p>
-    <p><a class = 'button destructor' href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat </a></p>
+    <a class = 'button modifier' href="{% url 'pojistenec_update' pojistenec.id%}"> Upravit </a>
+    <a class = 'button constructor' href="{% url 'pojistit-pojistence' pojistenec.id%}"> Pojistit </a>
+    <a class = 'button destructor' href="{% url 'pojistenec_delete' pojistenec.id%}"> Vymazat </a>
   </div>
 
 

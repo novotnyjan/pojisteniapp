@@ -86,7 +86,6 @@ nav ul a:hover, .aktivni a{
     min-width: 960px;
     padding: 80px 50px;
     margin: 0 auto;
-    flex: 1;
 }
 
 h1{
@@ -163,6 +162,7 @@ td{
 
 .paginator-container{
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .paginator-navigation a{
@@ -188,4 +188,22 @@ td{
 
 #paginator-go-to-end{
     border-radius: 2px 15px 15px 2px;
+}
+
+.list-table{
+    margin: 5px auto
+}
+
+.outside-list-button-container{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.list-header{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.td-typ-pojisteni, .td-jmeno-pojistence{
+    text-align: left;
 }

@@ -1,15 +1,15 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Seznam typů pojištění</h1>
+  <h1 class= 'list-header'>Seznam typů pojištění</h1>
   {% if typpojisteni_list %}
-  <table>
+  <table  class= 'list-table'>
     <thead>
       <th>Typ pojištění</th>
     </thead>
     {% for typpojisteni in typpojisteni_list %}
       <tr>
-        <td>
+        <td class = 'td-typ-pojisteni'>
           {{ typpojisteni }}
         </td>
         <td>
@@ -24,5 +24,7 @@
 {% endblock %}
 
 {% block register_entity%}
+<div class= 'outside-list-button-container'>
 <a class = 'button constructor' href="{% url 'typ-pojisteni_create'%}"> Nový typ pojištění </a>
+</div>
 {% endblock %}
