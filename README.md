@@ -1,5 +1,5 @@
 # pojisteniapp
-Training Django project.
+Practice Django project.
 
 Project is in debug mode, so to run it, simply navigate to the parent folder and execute command:
 ```
